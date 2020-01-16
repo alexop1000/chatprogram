@@ -50,7 +50,7 @@ io.on("connection", function(socket) {
   socket.on("disconnect", function() {
     var userdata = clientInfo[socket.id];
     console.log(userdata)
-    if (typeof(userdata !== undefined)) {
+    if (userdata !== undefined) {
       socket.leave(userdata.room); // leave the room
       //broadcast leave room to only memebers of same room
       socket.broadcast.to(userdata.room).emit("message", {
