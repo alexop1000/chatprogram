@@ -1,20 +1,19 @@
-var PORT = process.env.PORT || 3000; // take port from heroku or for loacalhost
-var express = require("express");
-var app = express(); // express app which is used boilerplate for HTTP
-var http = require("http").Server(app);
-
+// take port from heroku or for loacalhost
+// express app which is used boilerplate for HTTP
 //moment js
-var moment = require("moment");
-
-var clientInfo = {};
-
 //socket io module
-var io = require("socket.io")(http);
+const PORT = process.env.PORT || 6000;
+const express = require("express");
+const app = express();
+const http = require("http").Server(app);
+const moment = require("moment");
+const clientInfo = {};
+const io = require("socket.io")(http);
 
 // expose the folder via express thought
 app.use(express.static(__dirname + '/public'));
 
-// send current users to provided scoket
+// send current users to provided socket
 function sendCurrentUsers(socket) { // loading current users
   var info = clientInfo[socket.id];
   var users = [];
@@ -26,7 +25,7 @@ function sendCurrentUsers(socket) { // loading current users
     var userinfo = clientInfo[socketId];
     // check if user room and selcted room same or not
     // as user should see names in only his chat room
-    if (info.room == userinfo.room) {
+    if (info.room === userinfo.room) {
       users.push(userinfo.name);
     }
 
@@ -52,7 +51,7 @@ io.on("connection", function(socket) {
     console.log(userdata)
     if (userdata !== undefined) {
       socket.leave(userdata.room); // leave the room
-      //broadcast leave room to only memebers of same room
+      //broadcast leave room to only members of same room
       socket.broadcast.to(userdata.room).emit("message", {
         text: userdata.name + " has left",
         name: "System",
@@ -71,9 +70,9 @@ io.on("connection", function(socket) {
     socket.join(req.room);
     //broadcast new user joined room
     socket.broadcast.to(req.room).emit("message", {
-      name: "System",
-      text: req.name + ' has joined',
-      timestamp: moment().valueOf()
+      "name": "System",
+      "text": req.name + ' has joined',
+      "timestamp": moment().valueOf()
     });
 
   });

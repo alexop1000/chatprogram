@@ -4,6 +4,9 @@
     display: flex;
     align-items: center;
   }
+.background {
+  background-color: #2f3137;
+}
   .vertical-center .container-fluid {
     flex-grow:1
   }
@@ -13,14 +16,28 @@
   .messages p {
     margin: 6px 0;
   }
+  .room-title{
+    color: #ffffff;
+  }
+  .well {
+    background-color: #363940;
+    border-color: #363940;
+  }
+  .form-control{
+    background-color: #3f434b;
+    border-color: #3f434b;
+  }
   .mymessages {
-    text-align: right;
-    color: #2E6D88;
+    text-align: left;
+    color: #2e6d88;
     font-style: italic;
   }
   ul.messages.list-group {
     max-height: 50vh;
     overflow-y: scroll;
+  }
+  list-group-item{
+    opacity: 0.6;
   }
   .typing {
     font-style: italic;

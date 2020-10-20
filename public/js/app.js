@@ -3,9 +3,8 @@ var socket = io();
 // get query params from url
 var name = getQueryVariable("name") || 'Anonymous';
 var room = getQueryVariable("room") || 'No Room Selected';
-
 $(".room-title").text(room);
-// fires when client successfully conencts to the server
+// fires when client successfully connects to the server
 socket.on("connect", function() {
   console.log("Connected to Socket I/O Server!");
   console.log(name + " wants to join  " + room);
@@ -17,7 +16,7 @@ socket.on("connect", function() {
 });
 
 // below code is to know when typing is there
-var timeout;
+let timeout, typing;
 
 function timeoutFunction() {
   typing = false;
@@ -85,6 +84,7 @@ socket.on("userSeen", function(msg) {
 
 //setup for custom events
 socket.on("message", function(message) {
+  var umsg;
   console.log("New Message !");
   console.log(message.text);
   // insert messages in container
@@ -110,14 +110,14 @@ socket.on("message", function(message) {
   if (document[hidden]) {
     notifyMe(message);
     // also notify server that user has not seen messgae
-    var umsg = {
+    umsg = {
       text: name + " has not seen message",
       read: false
     };
     socket.emit("userSeen", umsg);
   } else {
     // notify  server that user has seen message
-    var umsg = {
+    umsg = {
       text: name + " has seen message",
       read: true,
       user: name
@@ -159,8 +159,8 @@ $form.on("submit", function(event) {
   var offset = obj.offset();
   var scrollLength = obj[0].scrollHeight;
   //  offset.top += 20;
-  $("ul.messages.list-group").animate({
-    scrollTop: scrollLength - offset.top
+  $(`ul.messages.list-group`).animate({
+    "scrollTop": scrollLength - offset.top
   });
 
 });
@@ -178,7 +178,7 @@ function notifyMe(msg) {
     //  var notification = new Notification(msg);
     var notification = new Notification('Chat App', {
       body: msg.name + ": " + msg.text,
-      icon: '/images/apple-icon.png' // optional
+      icon: 'public/images/apple-icon.png' // optional
     });
     notification.onclick = function(event) {
       event.preventDefault();
