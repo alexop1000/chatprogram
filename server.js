@@ -1,8 +1,8 @@
-// take port from heroku or for loacalhost
+// take port from heroku or for localhost
 // express app which is used boilerplate for HTTP
 //moment js
 //socket io module
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
