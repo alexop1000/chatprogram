@@ -10,6 +10,9 @@
   .vertical-center .container-fluid {
     flex-grow:1
   }
+  h1.text-center {
+    color: white;
+  }
   h1 {
     margin: 24px 0;
   }
@@ -19,6 +22,9 @@
   .room-title{
     color: #ffffff;
   }
+  label{
+    color: #ffffff;
+  }
   .well {
     background-color: #363940;
     border-color: #363940;
@@ -26,6 +32,7 @@
   .form-control{
     background-color: #3f434b;
     border-color: #3f434b;
+    color: #ffffff;
   }
   .mymessages {
     text-align: left;
