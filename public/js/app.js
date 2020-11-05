@@ -91,6 +91,9 @@ socket.on("message", function(message) {
   var $messages = $(".messages");
   var $message = $('<li class = "list-group-item"></li>');
 
+  if(message.text.includes("GAMER")){
+    message.text = "EPIC GAMER"
+  }
   var momentTimestamp = moment.utc(message.timestamp).local().format("h:mm a");
   //$(".messages").append($('<p>').text(message.text));
   $message.append("<strong>" + momentTimestamp + " " + message.name + "</strong>");
