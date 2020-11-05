@@ -22,12 +22,26 @@
   .room-title{
     color: #ffffff;
   }
+  li.list-group-item{
+    background-color: transparent;
+    border: transparent;
+  }
+  strong{
+    color: #ffffff;
+  }
+  p{
+    color: #ffffff;
+  }
   label{
     color: #ffffff;
   }
   .well {
     background-color: #363940;
     border-color: #363940;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    margin-left: 0px;
   }
   .form-control{
     background-color: #3f434b;
@@ -39,12 +53,15 @@
     color: #2e6d88;
     font-style: italic;
   }
-  ul.messages.list-group {
-    max-height: 50vh;
-    overflow-y: scroll;
+  ul.messages {
+    min-height: calc(100vh - 26rem);
   }
-  list-group-item{
-    opacity: 0.6;
+  ul.messages.list-group {
+    height: 100%;
+    width: 100%;
+    max-height: 3000px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   .typing {
     font-style: italic;
@@ -59,3 +76,22 @@
     font-size: 1.5em;
     color: #2AC151;
   }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
